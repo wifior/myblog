@@ -29,4 +29,8 @@ public class IndexController {
     public String archives(){
         return "archives";
     }
+    @GetMapping("/login")
+    public String login(){
+        return "admin/login";
+    }
 }

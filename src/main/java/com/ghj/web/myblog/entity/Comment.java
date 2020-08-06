@@ -1,8 +1,7 @@
 package com.ghj.web.myblog.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
@@ -17,7 +16,6 @@ import lombok.EqualsAndHashCode;
  * @since 2020-08-05
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
 @TableName("t_comment")
 public class Comment implements Serializable {
 
@@ -34,7 +32,10 @@ public class Comment implements Serializable {
 
     private String avatar;
 
+
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
+
 
 
 }

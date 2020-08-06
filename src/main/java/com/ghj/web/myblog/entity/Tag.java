@@ -16,7 +16,6 @@ import lombok.EqualsAndHashCode;
  * @since 2020-08-05
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
 @TableName("t_tag")
 public class Tag implements Serializable {
 
