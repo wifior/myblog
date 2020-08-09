@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="_fragment :: head(~{::title})">
+<head th:replace="admin/_fragment :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登陆</title>
@@ -14,7 +14,7 @@
                     管理后台登录
                 </div>
             </h2>
-            <form class="ui large form" method="post">
+            <form class="ui large form" method="post" th:action="@{/admin/login}">
                 <div class="ui segment">
                     <div class="field">
                         <div class="ui left icon input">
@@ -28,7 +28,7 @@
                             <input type="password" name="password" placeholder="请输入密码">
                         </div>
                     </div>
-                    <div class="ui fluid large teal submit button">登    录</div>
+                    <button class="ui fluid large teal submit button">登    录</button>
                 </div>
 
                 <div class="ui error message"></div>

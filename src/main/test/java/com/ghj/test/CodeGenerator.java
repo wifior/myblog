@@ -59,6 +59,10 @@ public class CodeGenerator {
         gc.setFileOverride(false);//重新生成时文件是否覆盖
         gc.setServiceName("%sService");//去掉Service接口的首字母I
         gc.setIdType(IdType.AUTO);
+        gc.setEnableCache(false);// XML 二级缓存
+        gc.setBaseResultMap(true);// XML ResultMap
+        gc.setBaseColumnList(true);// XML columList
+
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
         mpg.setGlobalConfig(gc);
 
@@ -83,6 +87,64 @@ public class CodeGenerator {
         mpg.setPackageInfo(pc);
 
 
+
+        // 自定义配置
+      /*  InjectionConfig cfg = new InjectionConfig() {
+            @Override
+            public void initMap() {
+                // to do nothing
+            }
+        };
+
+        // 如果模板引擎是 freemarker
+        String templatePath = "/templates/mapper.xml.ftl";
+        // 如果模板引擎是 velocity
+        // String templatePath = "/templates/mapper.xml.vm";
+
+        // 自定义输出配置
+        List<FileOutConfig> focList = new ArrayList<>();
+        // 自定义配置会被优先输出
+        focList.add(new FileOutConfig(templatePath) {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
+                        + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
+            }
+        });
+        *//*
+        cfg.setFileCreate(new IFileCreate() {
+            @Override
+            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) {
+                // 判断自定义文件夹是否需要创建
+                checkDir("调用默认方法创建的目录，自定义目录用");
+                if (fileType == FileType.MAPPER) {
+                    // 已经生成 mapper 文件判断存在，不想重新生成返回 false
+                    return !new File(filePath).exists();
+                }
+                // 允许生成模板文件
+                return true;
+            }
+        });
+        *//*
+        cfg.setFileOutConfigList(focList);
+        mpg.setCfg(cfg);*/
+
+        // 配置模板
+        TemplateConfig templateConfig = new TemplateConfig();
+
+        // 配置自定义输出模板
+        //指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别
+       // templateConfig.setEntity("templates/entity2.java");
+        templateConfig.setService(null);
+        templateConfig.setController(null);
+        templateConfig.setMapper(null);
+        templateConfig.setEntity(null);
+        templateConfig.setServiceImpl(null);
+
+        //templateConfig.setXml(null);
+        mpg.setTemplate(templateConfig);
+
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
@@ -97,7 +159,7 @@ public class CodeGenerator {
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix( "t_");
         mpg.setStrategy(strategy);
-       // mpg.setTemplateEngine(new FreemarkerTemplateEngine());
+        mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
     }
 
