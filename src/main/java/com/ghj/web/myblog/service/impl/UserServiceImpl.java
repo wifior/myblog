@@ -23,7 +23,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public User checkUser(String username, String password) {
-        User user = userMapper.selectById(1);
+        User user = userMapper.findUserByUsernameAndPassword(username,password);
         return user;
     }
 }
