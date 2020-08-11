@@ -31,8 +31,9 @@
                     <button class="ui fluid large teal submit button">登    录</button>
                 </div>
 
-                <div class="ui error message"></div>
+                <div class="ui error mini message"></div>
 
+                <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">请输入用户名密码</div>
             </form>
 
         </div>
@@ -43,5 +44,26 @@
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
 <script src="../static/js/semantic.min.js" th:src="@{/js/semantic.min.js}"></script>
 <!--/*/</th:block>/*/-->
+<script>
+    $('.ui.form').form({
+        fields:{
+            username:{
+                identifyer: 'username',
+                rules:[{
+                    type: 'empty',
+                    prompt:'请输入用户名'
+                }]
+            },
+            password:{
+                identifyer: 'password',
+                rules:[{
+                    type: 'empty',
+                    prompt:'请输入密码'
+                }]
+            }
+        }
+    });
+</script>
+
 </body>
 </html>

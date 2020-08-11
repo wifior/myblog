@@ -1,5 +1,6 @@
 package com.ghj.web.myblog.service.impl;
 
+import com.ghj.utils.MD5Utils;
 import com.ghj.web.myblog.entity.User;
 import com.ghj.web.myblog.mapper.UserMapper;
 import com.ghj.web.myblog.service.UserService;
@@ -23,7 +24,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public User checkUser(String username, String password) {
-        User user = userMapper.findUserByUsernameAndPassword(username,password);
+        User user = userMapper.findUserByUsernameAndPassword(username, MD5Utils.code(password));
         return user;
     }
 }
