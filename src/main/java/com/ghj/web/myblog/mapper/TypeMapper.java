@@ -2,6 +2,7 @@ package com.ghj.web.myblog.mapper;
 
 import com.ghj.web.myblog.entity.Type;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface TypeMapper extends BaseMapper<Type> {
 
+    Type getTypeByName(@Param("name") String name);
 }

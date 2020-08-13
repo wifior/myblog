@@ -39,8 +39,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" class="item">发布</a>
-            <a href="#" class="active teal item">列表</a>
+            <a href="#" th:href="@{/admin/types/input}" class="item">新增</a>
+            <a href="#" th:href="@{/admin/types}" class="active teal item">列表</a>
         </div>
     </div>
 </div>
@@ -48,7 +48,11 @@
 <!--中间部分-->
 <div class="m-padded-tb-big m-container-small">
     <div class="ui container">
-
+        <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+            <i class="close icon"></i>
+            <div class="header">提示</div>
+            <p th:text="${message}">恭喜，操作成功！</p>
+        </div>
         <table class="ui celled table">
             <thead>
             <tr>
@@ -121,17 +125,23 @@
     </div>
 </footer>
 <!--/*/<th:block th:replace="_fragment :: script">/*/-->
-<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
-<script src="../static/js/semantic.min.js" th:src="@{/js/semantic.min.js}"></script>
+<script src="../static/js/jquery.min.js" th:src="@{/static/js/jquery.min.js}"></script>
+<script src="../static/js/semantic.min.js" th:src="@{/static/js/semantic.min.js}"></script>
+<script src="../static/js/semantic.min.js" th:src="@{/static/js/semantic.min.js}"></script>
 <!--/*/</th:block>/*/-->
 
 <script>
-    $('.menu.toggle').click(function () {
+    $('.menu .toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
     });
 
-    $('.ui.dropdown').dropdown({
+    $('.ui .dropdown').dropdown({
         on:'hover'
+    });
+
+    $('.message .close').on('click',function () {
+        $(this).closest('.message')
+            .transition('fade');
     });
 </script>
 </body>

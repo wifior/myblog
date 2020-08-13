@@ -39,12 +39,17 @@ public class TypeServiceImpl extends ServiceImpl<TypeMapper, Type> implements Ty
     }
 
     @Override
-    public int updateType(Long id, Type type) {
+    public int updateType( Type type) {
         return typeMapper.updateById(type);
     }
 
     @Override
     public void deleteType(Long id) {
         typeMapper.deleteById(id);
+    }
+
+    @Override
+    public Type getTypeByName(String name) {
+        return typeMapper.getTypeByName(name);
     }
 }

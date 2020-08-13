@@ -21,8 +21,9 @@ public interface TypeService extends IService<Type> {
 
     IPage listType(Page page);
 
-    int updateType(Long id, Type type);
+    int updateType(Type type);
 
     void deleteType(Long id);
 
+    Type getTypeByName(String name);
 }
