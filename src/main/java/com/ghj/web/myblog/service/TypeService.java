@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ghj.web.myblog.entity.Type;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -20,6 +22,8 @@ public interface TypeService extends IService<Type> {
     Type getType(Long id);
 
     IPage listType(Page page);
+
+    List<Type> listType();
 
     int updateType(Type type);
 

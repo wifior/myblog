@@ -9,6 +9,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -36,6 +38,11 @@ public class TypeServiceImpl extends ServiceImpl<TypeMapper, Type> implements Ty
     @Override
     public IPage<Type> listType(Page page) {
         return typeMapper.selectPage(page,null);
+    }
+
+    @Override
+    public List<Type> listType() {
+        return typeMapper.selectList(null);
     }
 
     @Override

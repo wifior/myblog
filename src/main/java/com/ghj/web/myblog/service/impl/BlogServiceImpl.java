@@ -1,5 +1,7 @@
 package com.ghj.web.myblog.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ghj.web.myblog.entity.Blog;
 import com.ghj.web.myblog.mapper.BlogMapper;
 import com.ghj.web.myblog.service.BlogService;
@@ -17,4 +19,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements BlogService {
 
+    @Override
+    public Blog getBlog(Long id) {
+        return null;
+    }
+
+    @Override
+    public IPage<Blog> listBlog(Page page, Blog blog) {
+        return null;
+    }
 }
