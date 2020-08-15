@@ -3,6 +3,7 @@ package com.ghj.web.myblog.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ghj.web.myblog.entity.Blog;
+import com.ghj.web.myblog.entity.vo.BlogVo;
 import com.ghj.web.myblog.service.BlogService;
 import com.ghj.web.myblog.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class BlogController {
     private TypeService typeService;
 
     @GetMapping("/blogs")
-    public String list(@RequestParam(value = "pageSize", defaultValue = "5",required = false) int pageSize, @RequestParam(value = "pageNum",defaultValue = "1",required = false) int pageNum, Blog blog, Model model){
+    public String list(@RequestParam(value = "pageSize", defaultValue = "5",required = false) int pageSize, @RequestParam(value = "pageNum",defaultValue = "1",required = false) int pageNum, BlogVo blog, Model model){
         Page page = new Page(pageNum,pageSize);
         model.addAttribute("types",typeService.listType());
         model.addAttribute("page",blogService.listBlog(page,blog));
@@ -41,7 +42,7 @@ public class BlogController {
     }
 
     @GetMapping("/blogs/search")
-    public String search(@RequestParam(value = "pageSize", defaultValue = "5",required = false) int pageSize, @RequestParam(value = "pageNum",defaultValue = "1",required = false) int pageNum, Blog blog, Model model){
+    public String search(@RequestParam(value = "pageSize", defaultValue = "5",required = false) int pageSize, @RequestParam(value = "pageNum",defaultValue = "1",required = false) int pageNum, BlogVo blog, Model model){
         Page page = new Page(pageNum,pageSize);
         model.addAttribute("page",blogService.listBlog(page,blog));
         return "admin/blogs :: blogList";

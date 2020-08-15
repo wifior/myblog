@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * <p>
@@ -16,6 +18,8 @@ import lombok.EqualsAndHashCode;
  * @since 2020-08-05
  */
 @Data
+@Getter
+@Setter
 @TableName("t_blog")
 public class Blog implements Serializable {
 

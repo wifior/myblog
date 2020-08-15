@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ghj.web.myblog.entity.Blog;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.ghj.web.myblog.entity.vo.BlogVo;
 
 /**
  * <p>
@@ -17,6 +18,6 @@ public interface BlogService extends IService<Blog> {
 
     Blog getBlog(Long id);
 
-    IPage<Blog> listBlog(Page page,Blog blog);
+    IPage<Blog> listBlog(Page page, BlogVo blog);
 
 }
