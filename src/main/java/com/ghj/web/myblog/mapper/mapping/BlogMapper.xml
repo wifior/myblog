@@ -17,6 +17,7 @@
         <result column="recommend" property="recommend" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
+        <association property="type" column="type_id" select="com.ghj.web.myblog.mapper.TypeMapper.getType"></association>
     </resultMap>
 
     <!-- 通用查询结果列 -->

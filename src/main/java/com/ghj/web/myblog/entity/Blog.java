@@ -24,6 +24,12 @@ public class Blog implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
+   /* alter table t_blog
+    add type_id bigint(11) null;*/
+
+    @TableField("type_id")
+    private Long typeId;
+
     private String title;
 
     private String content;
@@ -50,6 +56,7 @@ public class Blog implements Serializable {
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
+
 
 
 }

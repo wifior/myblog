@@ -16,4 +16,8 @@
     <select id="getTypeByName" resultType="com.ghj.web.myblog.entity.Type">
         select * from t_type where name=#{name}
     </select>
+
+    <select id="getType" resultType="com.ghj.web.myblog.entity.Type">
+        select * from t_type where id=#{id}
+    </select>
 </mapper>
