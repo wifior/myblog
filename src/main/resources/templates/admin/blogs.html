@@ -55,14 +55,18 @@
                     <input type="text" name="title" placeholder="标题">
                 </div>
                 <div class="field">
-                    <div class="ui selection dropdown">
-                        <input type="hidden" name="type">
-                        <i class="dropdown icon"></i>
-                        <div class="default text">分类</div>
-                        <div class="menu">
-                            <div th:each="type : ${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}">错误日志</div>
+                    <div class="ui labeled action input">
+                        <div class="ui type selection dropdown">
+                            <input type="hidden" name="type">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">分类</div>
+                            <div class="menu">
+                                <div th:each="type : ${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}">错误日志</div>
+                            </div>
                         </div>
+                        <button id="clear-btn" class="ui compact button">clear</button>
                     </div>
+
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
@@ -76,7 +80,8 @@
             </div>
         </div>
 
-        <table th:fragment="blogList" class="ui compact teal table">
+        <div id="table-container">
+            <table th:fragment="blogList" class="ui compact teal table">
             <thead>
             <tr>
                 <th></th>
@@ -93,6 +98,7 @@
                 <td th:text="${blog.title}">学习</td>
                 <td th:text="${blog.type.name}">升级</td>
                 <td th:text="${blog.recommend}?'是':'否'">是</td>
+                <td th:text="${blog.published}?'草稿':'发布'">草稿</td>
                 <td th:text="${blog.updateTime}">2020-03-30</td>
                 <td>
                     <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">编辑</a>
@@ -112,6 +118,12 @@
             </tr>
             </tfoot>
         </table>
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示：</div>
+                <p th:text="${message}">恭喜，操作成功！</p>
+            </div>
+        </div>
 
     </div>
 
@@ -164,14 +176,19 @@
     $('.ui.dropdown').dropdown({
         on:'hover'
     });
-
+    $('.message .close').on('click',function () {
+        $(this).closest('.message').transition('fade');
+    })
     function page(obj) {
         $("[name='page']").val($(obj).data("page"));
         loaddata();
     }
     $("#search-btn").click(function () {
-        alert(3);
+        $("[name='page']").val(0);
         loaddata();
+    });
+    $("#clear-btn").on('click',function () {
+        $('.ui.type.dropdown').dropdown('clear');
     });
     function loaddata() {
         $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{

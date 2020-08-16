@@ -41,7 +41,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, title, type_id ,content, firstPicture, flag, views, appreciation, share_statement, commentabled, published, recommend, create_time, update_time
+        id, title, type_id  ,content, firstPicture, flag, views, appreciation, share_statement, commentabled, published, recommend, create_time, update_time
     </sql>
 
     <select id="selectListPage" resultMap="BasePageResultMap">
