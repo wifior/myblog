@@ -59,9 +59,28 @@ public class BlogController {
         return "admin/blogsInput";
     }
 
+    @GetMapping("/blogs/{id}/input")
+    public String editInput(@PathVariable Long id, Model model){
+        model.addAttribute("types",typeService.listType());
+        model.addAttribute("tags",tagService.list());
+        model.addAttribute("blog",blogService.getBlog(id));
+        return "admin/blogsInput";
+    }
+
     @PostMapping("/blogs")
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session){
-        boolean b = blogService.save(blog);
+        boolean b = blogService.saveOrUpdate(blog);
+        if(b){
+            attributes.addFlashAttribute("message","操作成功");
+        }else {
+            attributes.addFlashAttribute("message","操作失败");
+        }
+        return "redirect:/admin/blogs";
+    }
+
+    @GetMapping("/blogs/{id}/delete")
+    public String del(@PathVariable Long id, RedirectAttributes attributes){
+        boolean b =blogService.removeById(id);
         if(b){
             attributes.addFlashAttribute("message","操作成功");
         }else {
