@@ -59,4 +59,9 @@ public class TypeServiceImpl extends ServiceImpl<TypeMapper, Type> implements Ty
     public Type getTypeByName(String name) {
         return typeMapper.getTypeByName(name);
     }
+
+    @Override
+    public List listTypeTop(int i) {
+        return null;
+    }
 }

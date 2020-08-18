@@ -42,6 +42,7 @@ public class Blog implements Serializable {
     private String firstPicture;
 
     private String flag;
+    private String description;
 
     private Integer views;
 

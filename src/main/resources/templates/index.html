@@ -45,532 +45,62 @@
                                 <h3 class="ui teal header">博客</h3>
                             </div>
                             <div class="column right aligned">
-                                共<h3 class="ui orange header m-inline-block m-text-thin">888</h3>篇
+                                共<h3 class="ui orange header m-inline-block m-text-thin" th:text="${page.total}">888</h3>篇
                             </div>
                         </div>
                     </div>
 
                     <!--content-->
                     <div class="ui attached segment">
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
+                        <div class="ui padded vertical segment m-padded-tb-large" th:each="blog:${page.records}">
+                            <div class="ui middle aligned mobile reversed stackable grid">
                                 <div class="eleven wide column">
-                                    <h3 class="ui header">你现在好吗？</h3>
-                                    <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
+                                    <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">你现在好吗？</a> </h3>
+                                    <p class="m-text" th:text="${blog.description}......">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
                                     <div class="ui grid">
                                         <div class="eleven wide column">
                                             <div class="ui mini horizontal link list">
                                                 <div class="item">
-                                                    <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
+                                                    <img src="https://i.picsum.photos/id/1001/100/100.jpg" th:src="@{${blog.user.avatar}}" class="ui avatar image">
                                                     <div class="content">
-                                                        <a href="#" class="header">葛会军</a>
+                                                        <a href="#" class="header" th:text="${blog.user.nickname}">葛会军</a>
                                                     </div>
                                                 </div>
                                                 <div class="item">
-                                                    <i class="calendar icon"></i>2020-01-10
+                                                    <i class="calendar icon"></i><span th:text="${blog.updateTime}">2020-01-10</span>
                                                 </div>
                                                 <div class="item">
-                                                    <i class="eye icon"></i>988
+                                                    <i class="eye icon"></i><span th:text="${blog.views}">2020</span>
                                                 </div>
                                             </div>
 
                                         </div>
 
                                         <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
+                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin" th:text="blog.type.name">认知升级</a>
 
                                         </div>
                                     </div>
                                 </div>
                                 <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
+                                    <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                                        <img class="ui rounded image" th:src="@{${blog.firstPicture}}" src="https://i.picsum.photos/id/1001/800/450.jpg">
                                     </a>
 
                                 </div>
                             </div>
 
                         </div>
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">你现在好吗？</h3>
-                                    <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
-                                    <div class="ui grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui mini horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">葛会军</a>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i>2020-01-10
-                                                </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i>988
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
-                                    </a>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">你现在好吗？</h3>
-                                    <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
-                                    <div class="ui grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui mini horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">葛会军</a>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i>2020-01-10
-                                                </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i>988
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
-                                    </a>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">你现在好吗？</h3>
-                                    <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
-                                    <div class="ui grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui mini horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">葛会军</a>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i>2020-01-10
-                                                </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i>988
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
-                                    </a>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">你现在好吗？</h3>
-                                    <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
-                                    <div class="ui grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui mini horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">葛会军</a>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i>2020-01-10
-                                                </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i>988
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
-                                    </a>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                        <div class="ui mobile reversed stackable grid">
-                            <div class="eleven wide column">
-                                <h3 class="ui header">你现在好吗？</h3>
-                                <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
-                                <div class="ui grid">
-                                    <div class="eleven wide column">
-                                        <div class="ui mini horizontal link list">
-                                            <div class="item">
-                                                <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
-                                                <div class="content">
-                                                    <a href="#" class="header">葛会军</a>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i>2020-01-10
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i>988
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="right aligned five wide column">
-                                        <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="five wide column">
-                                <a href="#" target="_blank">
-                                    <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
-                                </a>
-
-                            </div>
-                        </div>
-
-                    </div>
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                        <div class="ui mobile reversed stackable grid">
-                            <div class="eleven wide column">
-                                <h3 class="ui header">你现在好吗？</h3>
-                                <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
-                                <div class="ui grid">
-                                    <div class="eleven wide column">
-                                        <div class="ui mini horizontal link list">
-                                            <div class="item">
-                                                <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
-                                                <div class="content">
-                                                    <a href="#" class="header">葛会军</a>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i>2020-01-10
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i>988
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="right aligned five wide column">
-                                        <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="five wide column">
-                                <a href="#" target="_blank">
-                                    <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
-                                </a>
-
-                            </div>
-                        </div>
-
-                    </div>
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">你现在好吗？</h3>
-                                    <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
-                                    <div class="ui grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui mini horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">葛会军</a>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i>2020-01-10
-                                                </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i>988
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
-                                    </a>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">你现在好吗？</h3>
-                                    <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
-                                    <div class="ui grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui mini horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">葛会军</a>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i>2020-01-10
-                                                </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i>988
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
-                                    </a>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">你现在好吗？</h3>
-                                    <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
-                                    <div class="ui grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui mini horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">葛会军</a>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i>2020-01-10
-                                                </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i>988
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
-                                    </a>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">你现在好吗？</h3>
-                                    <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
-                                    <div class="ui grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui mini horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">葛会军</a>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i>2020-01-10
-                                                </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i>988
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
-                                    </a>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">你现在好吗？</h3>
-                                    <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
-                                    <div class="ui grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui mini horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">葛会军</a>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i>2020-01-10
-                                                </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i>988
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
-                                    </a>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">你现在好吗？</h3>
-                                    <p class="m-text">北京现在北京现在是几点，我也不知道，只有正确北京现在是几点，我也不知道，只有正确是几点，我也不知道，只有正确的目标，也在粗 </p>
-                                    <div class="ui grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui mini horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i.picsum.photos/id/1001/100/100.jpg" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">葛会军</a>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i>2020-01-10
-                                                </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i>988
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img class="ui rounded image" src="https://i.picsum.photos/id/1001/800/450.jpg">
-                                    </a>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-
                     </div>
 
                     <!--content bottom-->
                     <div class="ui bottom attached segment">
                         <div class="ui middle aligned two column grid">
                             <div class="column">
-                                <a href="#" class="ui mini teal basic button">上一页</a>
+                                <a href="#" th:href="@{/(pageNum=${page.current}-1)}" class="ui mini teal basic button">上一页</a>
                             </div>
                             <div class="column right aligned">
-                                <a href="#" class="ui mini teal basic button">下一页</a>
+                                <a href="#" th:href="@{/(pageNum=${page.current}+1)}" class="ui mini teal basic button">下一页</a>
                             </div>
                         </div>
                     </div>
@@ -591,33 +121,10 @@
                         </div>
                         <div class="ui teal segment">
                             <div class="ui fluid vertical menu">
-                                <a href="#" class="item">
-                                    学习日志
-                                    <div class="ui teal basic left pointing label">13</div>
+                                <a href="#" class="item" th:each="type:${types}">
+                                    <span th:text="${type.name}">学习日志</span>
+                                    <div class="ui teal basic left pointing label" th:text="${#array.length(type.blogs)}">13</div>
                                 </a>
-                                <a href="#" class="item">
-                                    学习日志
-                                    <div class="ui teal basic left pointing label">13</div>
-                                </a>
-                                <a href="#" class="item">
-                                    学习日志
-                                    <div class="ui teal basic left pointing label">13</div>
-                                </a>
-                                <a href="#" class="item">
-                                学习日志
-                                <div class="ui teal basic left pointing label">13</div>
-                            </a>
-                                <a href="#" class="item">
-                                学习日志
-                                <div class="ui teal basic left pointing label">13</div>
-                            </a>
-                                <a href="#" class="item">
-                                    学习日志
-                                    <div class="ui teal basic left pointing label">13</div>
-                                </a>
-
-
-
                             </div>
                         </div>
                     </div>
@@ -634,45 +141,9 @@
                             </div>
                         </div>
                         <div class="ui teal segment">
-                            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                                方法论
-                                <div class="detail">90</div>
-                            </a>
-                            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                                房间练习
-                                <div class="detail">90</div>
-                            </a>
-                            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                                房间练习
-                                <div class="detail">90</div>
-                            </a>
-                            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                                房间练习
-                                <div class="detail">90</div>
-                            </a>
-                            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                                房间练习
-                                <div class="detail">90</div>
-                            </a>
-                            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                                房间练习
-                                <div class="detail">90</div>
-                            </a>
-                            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                                房间练习
-                                <div class="detail">90</div>
-                            </a>
-                            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                                房间练习
-                                <div class="detail">90</div>
-                            </a>
-                            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                                房间练习
-                                <div class="detail">90</div>
-                            </a>
-                            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                                房间练习
-                                <div class="detail">90</div>
+                            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny" th:each="tag:${tags}">
+                                <span th:text="${tag.name}">学习日志</span>
+                                <div class="detail" th:text="${#array.length(tag.blogs)}">90</div>
                             </a>
                         </div>
                     </div>
@@ -682,20 +153,8 @@
                             <i class="bookmark icon"></i>最新推荐
 
                         </div>
-                        <div class="ui segment">
-                            <a href="#" target="_blank" class="m-black m-text-thin">用户故事</a>
-                        </div>
-                        <div class="ui segment">
-                            <a href="#" target="_blank" class="m-black m-text-thin">用户故事</a>
-                        </div>
-                        <div class="ui segment">
-                            <a href="#" target="_blank" class="m-black m-text-thin">用户故事</a>
-                        </div>
-                        <div class="ui segment">
-                            <a href="#" target="_blank" class="m-black m-text-thin">用户故事</a>
-                        </div>
-                        <div class="ui segment">
-                            <a href="#" target="_blank" class="m-black m-text-thin">用户故事</a>
+                        <div class="ui segment"  th:each="blog:${recommendBlogs}">
+                            <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black m-text-thin" th:text="${blog.title}">用户故事</a>
                         </div>
                     </div>
                     <!--二维码-->

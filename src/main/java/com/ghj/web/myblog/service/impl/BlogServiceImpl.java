@@ -10,6 +10,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -39,5 +41,10 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
            f=0;
         }
         return blogMapper.selectListPage(page,title,type,f);
+    }
+
+    @Override
+    public List listRecommendBlogsTop(int i) {
+        return null;
     }
 }

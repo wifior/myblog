@@ -30,4 +30,6 @@ public interface TypeService extends IService<Type> {
     void deleteType(Long id);
 
     Type getTypeByName(String name);
+
+    List listTypeTop(int i);
 }
