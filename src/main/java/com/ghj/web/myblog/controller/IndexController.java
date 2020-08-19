@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -37,5 +38,13 @@ public class IndexController {
         model.addAttribute("tags",tagService.listTagTop(10));
         model.addAttribute("recommendBlogs",blogService.listRecommendBlogsTop(8));
         return "index";
+    }
+
+    @PostMapping("/search")
+    public String search(@RequestParam String query,@RequestParam(value = "pageSize", defaultValue = "5",required = false) int pageSize,@RequestParam(value = "pageNum",defaultValue = "1",required = false) int pageNum, Model model){
+        Page page = new Page(pageNum,pageSize);
+        model.addAttribute("page",blogService.listBlog(page,null));
+        model.addAttribute("query",query);
+        return "search";
     }
 }
