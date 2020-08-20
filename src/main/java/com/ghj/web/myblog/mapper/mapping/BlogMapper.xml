@@ -39,9 +39,33 @@
                      select="com.ghj.web.myblog.mapper.TypeMapper.getType"></association>
     </resultMap>
 
+    <resultMap id="BlogVoResultMap" type="com.ghj.web.myblog.entity.vo.BlogVo">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="firstPicture" property="firstPicture" />
+        <result column="flag" property="flag" />
+        <result column="views" property="views" />
+        <result column="appreciation" property="appreciation" />
+        <result column="share_statement" property="shareStatement" />
+        <result column="commentabled" property="commentabled" />
+        <result column="published" property="published" />
+        <result column="recommend" property="recommend" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+<!--        <association property="tagIds" column="id" select="com.ghj.web.myblog.mapper.BlogTagMapper.getTagByBlog"></association>-->
+        <association property="type" column="type_id"
+                     javaType="com.ghj.web.myblog.entity.Type"
+                     select="com.ghj.web.myblog.mapper.TypeMapper.getType"></association>
+    </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, title, type_id  ,content, firstPicture, flag, views, appreciation, share_statement, commentabled, published, recommend, create_time, update_time
+    </sql>
+
+
+    <sql id="blog_Column_List">
+        id, title, type_id  ,description,content, firstPicture, flag, views, appreciation, share_statement, commentabled, published, recommend, create_time, update_time
     </sql>
 
     <select id="selectListPage" resultMap="BasePageResultMap">
@@ -57,7 +81,10 @@
                 and recommend=#{recommend}
             </if>
         </where>
+    </select>
 
+    <select id="selectBlogVoById" resultMap="BlogVoResultMap">
+        select <include refid="blog_Column_List"/> from t_blog  where id = #{id}
     </select>
 
 </mapper>

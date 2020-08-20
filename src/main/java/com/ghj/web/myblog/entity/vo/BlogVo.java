@@ -16,8 +16,10 @@ public class BlogVo {
 
     private Type type;
     private Integer tp;
+    private String tagIds;
 
     private String title;
+    private String description;
 
     private String content;
 

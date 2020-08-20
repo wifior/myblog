@@ -27,8 +27,9 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     private BlogMapper blogMapper;
 
     @Override
-    public Blog getBlog(Long id) {
-        return null;
+    public BlogVo getBlog(Long id) {
+        BlogVo blogVo = blogMapper.selectBlogVoById(id);
+        return blogVo;
     }
 
     @Override

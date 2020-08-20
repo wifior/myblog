@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ghj.web.myblog.entity.Blog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ghj.web.myblog.entity.vo.BlogVo;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -19,4 +20,6 @@ public interface BlogMapper extends BaseMapper<Blog> {
     IPage<Blog> selectListPage(Page page, Blog blog);
 
     IPage<Blog> selectListPage(Page page, @Param("title") String title, @Param("type")Integer type, @Param("recommend")int f);
+
+    BlogVo selectBlogVoById(Long id);
 }
